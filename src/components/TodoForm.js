@@ -7,8 +7,9 @@ import { Form, Input, Button, Accordion, Icon, Divider } from 'semantic-ui-react
 const TodoForm = (props) => {
     const [taskText, setTaskText] = useState('');
     const [taskDate, setTaskDate] = useState('');
+    const [taskTags, setTaskTags] = useState('');
     const [tabIndex, setTabIndex] = useState(1);
-
+    
     const handleTaskChange = e => {
         setTaskText(e.target.value);
     }
@@ -17,12 +18,18 @@ const TodoForm = (props) => {
         setTaskDate(value);
     }
 
+    const handleTagsChange = e => {
+        setTaskTags(e.target.value)
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
+        console.log(taskTags)
         //dispatch
-        props.addTask({type: "ADD_TASK", payload: {taskText: taskText, taskDate: taskDate}}); 
+        props.addTask({type: "ADD_TASK", payload: {taskText: taskText, taskDate: taskDate, taskTags: taskTags.split(' ')}}); 
         setTaskText('');
         setTaskDate('');
+        setTaskTags('');
     }
 
     const handleClick = (e, titleProps) => {
@@ -46,6 +53,7 @@ const TodoForm = (props) => {
                 </Accordion.Title>
                 <Accordion.Content active={tabIndex === 0}>
                     <DateInput clearable clearIcon={<Icon name="remove" color="red" />} dateFormat="MM/DD/YYYY" name="date" placeholder="Complete By Date" value={taskDate} iconPosition="left" onChange={handleDateChange} />
+                    <Input icon='tags' value={taskTags} onChange={handleTagsChange} iconPosition='left' label={{ tag: true, content: 'Add Tags'}} labelPosition='right' placeholder="Add some tags" />
                     <Divider />
                 </Accordion.Content>
             </Accordion>

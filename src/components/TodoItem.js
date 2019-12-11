@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 
-import { List, Icon } from 'semantic-ui-react';
+import { List, Icon, Label } from 'semantic-ui-react';
 
 const TodoItem = ({ task, completeTask }) => {
     console.log(task.completedDate)
@@ -15,6 +15,14 @@ const TodoItem = ({ task, completeTask }) => {
                         <List.Description>
                             Complete By: {task.completeBy}
                         </List.Description>
+                    }
+                    {
+                        task.tags.length > 0 &&
+                        <>
+                           Tags: {task.tags.map(tag => 
+                               <Label>{tag}</Label>
+                           )}
+                        </>
                     }
                     {
                         task.completedDate.length > 0 &&

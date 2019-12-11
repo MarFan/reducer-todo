@@ -9,7 +9,7 @@ export const reducer = (state, action) => {
                     item: action.payload.taskText, 
                     completed: false, 
                     id: Date.now(),
-                    tags: [],
+                    tags: action.payload.taskTags,
                     completeBy: action.payload.taskDate,
                     completedDate: ''
                 }
