@@ -6,9 +6,12 @@ export const reducer = (state, action) => {
             return [
                 ...state, 
                 {
-                    item: action.payload, 
+                    item: action.payload.taskText, 
                     completed: false, 
-                    id: Date.now()
+                    id: Date.now(),
+                    tags: [],
+                    completeBy: action.payload.taskDate,
+                    completedDate: ''
                 }
             ]
         case "COMPLETE_TASK":
@@ -16,7 +19,8 @@ export const reducer = (state, action) => {
                     if (task.id === action.payload) {
                       return {
                         ...task,
-                        completed: !task.completed
+                        completed: !task.completed,
+                        completedDate: new Date()
                       }
                     } else {
                       return task;
