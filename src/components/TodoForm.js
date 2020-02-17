@@ -24,7 +24,7 @@ const TodoForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(taskTags)
+        //console.log(taskTags)
         //dispatch
         props.addTask({type: "ADD_TASK", payload: {taskText: taskText, taskDate: taskDate, taskTags: taskTags.split(' ')}}); 
         setTaskText('');

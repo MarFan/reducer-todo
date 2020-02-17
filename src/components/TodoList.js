@@ -15,7 +15,10 @@ const TodoList = ({ todoItems, completeTask }) => {
             }
         </List>
         <Divider />
-        <Button onClick={() => completeTask( {type: "CLEAN_UP" })}>Clear Completed</Button>
+        {
+            todoItems.length > 0 && <Button onClick={() => completeTask( {type: "CLEAN_UP" })}>Clear Completed</Button>
+        }
+        
         </>
     )
 }

@@ -17,8 +17,9 @@ const TodoItem = ({ task, completeTask }) => {
                         </List.Description>
                     }
                     {
-                        task.tags.length > 0 &&
+                        task.tags[0].length > 0 &&
                         <>
+                           {task.tags.length}
                            Tags: {task.tags.map(tag => 
                                <Label>{tag}</Label>
                            )}
